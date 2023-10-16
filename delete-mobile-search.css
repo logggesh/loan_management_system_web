@@ -1,0 +1,18 @@
+.dashboard{
+    min-height: 100vh;
+}
+.heading{
+    border-bottom: 2px solid grey;
+}
+.main-page{
+    background-color: #D2E0FB;
+}
+.form-control{
+    width: 30%;
+    position: relative;
+    text-align: center;
+}
+input[type="submit"]{
+    position: relative;
+    left: -10px;
+}

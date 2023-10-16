@@ -1,0 +1,78 @@
+.dashboard{
+    min-height: 100vh;
+}
+.heading{
+    border-bottom: 2px solid grey;
+}
+.loan_num_view{
+    height: 70px !important;
+    width: 230px !important;
+    background-color: white;
+    border-radius: 15px;
+}
+.lnviewnum{
+    margin-top: 20px !important;
+}
+.form-back{
+    height: 500px;
+    width: 800px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 10px 10px 10px 10px gray;
+}
+#submit_button{
+    width: 200px;
+    height: 40px;
+    border-radius: 15px;
+}
+#cancel_button{
+    width: 200px;
+    height: 40px;
+    border-radius: 15px;
+}
+.calculate{
+    border-radius: 15px;
+}
+.form-control{
+    width: 600px !important;
+}
+.main-page{
+    background-color: #D2E0FB;
+}
+#loan-enter-field{
+    width: 75%;
+    border: 3px solid gray;
+}
+textarea{
+    height: 100px;
+    width: 75% !important;
+    border: 3px solid gray;
+}
+.form-back-2{
+    margin-top: 100px !important;
+    height: 500px;
+    width: 800px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 10px 10px 10px 10px gray;
+}
+.form-back-3{
+    margin-top: 100px !important;
+    height: 350px;
+    width: 800px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 10px 10px 10px 10px gray;
+}
+.form-back-4{
+    margin-top: 100px !important;
+    height: 470px !important;
+    width: 800px !important;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 10px 10px 10px 10px gray;
+}
+#comp_name{
+    text-decoration: none;
+    color: white;
+}

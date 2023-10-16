@@ -1,0 +1,15 @@
+body{
+ background: linear-gradient(#B931FC,#FF6AC2,#FFE5E5);
+}
+.buttonsback{
+    background-color: blanchedalmond;
+    height: 150px !important;
+    width: 200px !important;
+}
+.button-back{
+    width: 50% !important;
+    height: 100px !important;
+}
+.row{
+    height: 700px !important;
+}

@@ -1,0 +1,36 @@
+.container-fluid{
+    background-color: #D2E0FB;
+    min-height: 100vh;
+    width: 100vh;
+}
+.form-back-customer{
+    height: 300px;
+    width: 600px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 10px 10px 10px 10px gray;
+}
+.amt_input{
+    width: 300px !important;
+}
+.form-back-guranteer{
+    height: 300px;
+    width: 600px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 10px 10px 10px 10px gray;
+}
+.form-back-vechicle{
+    height: 300px;
+    width: 600px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 10px 10px 10px 10px gray;
+}
+.form-back-amount{
+    height: 300px;
+    width: 600px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 10px 10px 10px 10px gray;
+}

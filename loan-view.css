@@ -1,0 +1,6 @@
+.dashboard{
+    min-height: 100vh;
+}
+.heading{
+    border-bottom: 2px solid grey;
+}
