@@ -189,12 +189,12 @@
                         <?php
                         if(isset($_GET['loan'])){
                             $loannumber_set=$_GET['loan'];
-                            $query="select numberofmonths from amountdetails where loan=$loannumber_set";
+                            $query="select Total_months from amountdetails where loan=$loannumber_set";
                             $runnit=mysqli_query($con,$query);
                             
                         }
                          while($row=mysqli_fetch_assoc($runnit)){
-                        echo "&nbsp".$row['numberofmonths'];
+                        echo "&nbsp".$row['Total_months'];
                               }
                         ?>
                     </div>
@@ -220,51 +220,106 @@
                     <div class="col-lg-12 mt-4">
                     <form method="POST">
                         <input class="form-control amt_input" name="amt" id="amt_input" type="text" placeholder="Enter Amount">
-                        <input type="submit" value="Pay">
+                        <input type="submit" value="Pay" class="btn btn-success">
                     </form>
                     <?php
-                        if($_SERVER==$_REQUEST['POST']){
-                            $hostname="127.0.0.1";
-    $username="root";
-    $password="";
-    $dbname="loandetails";
-    $con=mysqli_connect($hostname,$username,$password,$dbname);
-    $cur_date=date('d-m-y');
-    $query="insert into amountdetails values(Dates,Amount_per_month,"
-                            $amt=$_POST['amt'];
-                            
-                        }
-                    ?>
-                    </div>
-                    <div class="col-lg-12">
-                        Total Balance: 
-                        <?php
+                        $hostname="127.0.0.1";
+                        $username="root";
+                        $password="";
+                        $dbname="loandetails";
                         if(isset($_GET['loan'])){
                             $loannumber_set=$_GET['loan'];
-                            $query="select Total_amount from amountdetails where loan=$loannumber_set";
-                            $runnit=mysqli_query($con,$query);
-                            
-                        } 
-                        while($row=mysqli_fetch_assoc($runnit)){
-                        echo "&nbsp".$row['Total_amount'];
-                              }?>
-
+                        }
+                        $con=mysqli_connect($hostname,$username,$password,$dbname);
+                        if($_SERVER['REQUEST_METHOD']=='POST'){
+                            $amt_received=$_POST['amt'];
+                            $cur_date=date('y-m-d');
+                            echo $cur_date;
+                            $amount_bal="select Amount_pending from amountdetails where loan='$loannumber_set'";
+                        $create_it=mysqli_query($con,$amount_bal);
+                        while($row=mysqli_fetch_assoc($create_it)){
+                            $tot_amt=$row['Amount_pending'];
+                        }
+                            $bal_amt=$tot_amt-$amt_received;
+                            $update_amt="update amountdetails set Amount_pending='$bal_amt' where loan='$loannumber_set'";
+                            $update_run=mysqli_query($con,$update_amt);
+                            $query_amt="insert into payment_details(loan,amt_received_date,amt_received,balance_amount) values('$loannumber_set','$cur_date','$amt_received','$bal_amt')";
+                            $runit=mysqli_query($con,$query_amt);
+                        }
+                        
+                    ?>
                     </div>
                 <table class="table mt-3">
                     <thead class="thead-dark">
                         <tr>
                         <th scope="col">Date</th>
-                        <th scope="col">Amount Per Month</th>
-                        <th scope="col">Payment Status</th>
+                        <th scope="col">Amount Received</th>
+                        <th scope="col">Balance Amount</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                         <td>
+                        <?php
+                        $hostname="127.0.0.1";
+                        $username="root";
+                        $password="";
+                        $dbname="loandetails";
+                        $con=mysqli_connect($hostname,$username,$password,$dbname);
+
+                        if(isset($_GET['loan'])){
+                            $loannumber_set=$_GET['loan'];
+                        }
+                        $query_amt="select * from payment_details where loan='$loannumber_set'";
+                        $runit=mysqli_query($con,$query_amt);
+                        while($row=mysqli_fetch_assoc($runit)){
+                            $date=$row['amt_received_date'];
+                            echo $date.'<br>';
+                        }
                         
-                         </td>
+                        ?>
+                        </td>
                         <td>
+                        <?php
+                        $hostname="127.0.0.1";
+                        $username="root";
+                        $password="";
+                        $dbname="loandetails";
+                        $con=mysqli_connect($hostname,$username,$password,$dbname);
+
+                        if(isset($_GET['loan'])){
+                            $loannumber_set=$_GET['loan'];
+                        }
+                        $query_amt="select * from payment_details where loan='$loannumber_set'";
+                        $runit=mysqli_query($con,$query_amt);
+                        while($row=mysqli_fetch_assoc($runit)){
+                            
+                            $amt_received_disp=$row['amt_received'];
+                            echo $amt_received_disp.'<br>';    
+                        }
                         
+                        ?>                       
+                        </td>
+                        <td>
+                        <?php
+                        $hostname="127.0.0.1";
+                        $username="root";
+                        $password="";
+                        $dbname="loandetails";
+                        $con=mysqli_connect($hostname,$username,$password,$dbname);
+
+                        if(isset($_GET['loan'])){
+                            $loannumber_set=$_GET['loan'];
+                        }
+                        $query_amt="select * from payment_details where loan='$loannumber_set'";
+                        $runit=mysqli_query($con,$query_amt);
+                        while($row=mysqli_fetch_assoc($runit)){
+
+                            $balance_amt_disp=$row['balance_amount'];
+                            echo $balance_amt_disp.'<br>';
+                        }
+                        
+                        ?>
                         </td>   
                         </tr>
                     </tbody>

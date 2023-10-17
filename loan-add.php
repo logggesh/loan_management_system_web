@@ -239,10 +239,13 @@
         if($model_year>date("Y")){
             echo "<script>alert('Please enter a valid year')</script>";
         }
+        
         else {
-            
-            $query = "insert into loandetails values(0,'$customer_name','$mobile_no','$customer_address','$customer_landmark','$vechicle_name','$model_year','$registration_number','$guranteer_name','$guranteer_number','$guranteer_address')";
-            $amtdet_query="insert into amountdetails(Total_amount,Amount_pending,Amount_to_pay,Dates,Amount_per_month,numberofmonths) values('$amount','null','null','$cur_date','$amt_per_mon','$no_of_months')";
+            while($row=mysqli_fetch_assoc($process)){
+                $lnadd=$row['loan']+1;
+            }  
+            $query = "insert into loandetails values('$lnadd','$customer_name','$mobile_no','$customer_address','$customer_landmark','$vechicle_name','$model_year','$registration_number','$guranteer_name','$guranteer_number','$guranteer_address')";
+            $amtdet_query="insert into amountdetails(loan,Total_amount,Amount_pending,Amount_to_pay,Amount_per_month,Total_months,Dates) values('$lnadd','$amount','$amount','null','$amt_per_mon','$no_of_months','$cur_date')";
             $run = mysqli_query($con, $query);
             $amt_run=mysqli_query($con,$amtdet_query);
             
